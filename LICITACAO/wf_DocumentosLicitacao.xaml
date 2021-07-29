@@ -8,10 +8,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>544,1348</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>983,3028</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>wf_DocumentosLicitacao_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="46">
+    <scg:List x:TypeArguments="x:String" Capacity="35">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -41,10 +41,16 @@
       <x:String>UiPath.UIAutomationNext.Activities</x:String>
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Security</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="52">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="29">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -70,23 +76,25 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="wf_DocumentosLicitacao" sap:VirtualizedContainerService.HintSize="554,1283" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="wf_DocumentosLicitacao" sap:VirtualizedContainerService.HintSize="993,2963" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="var_booElementDocumento" />
+      <Variable x:TypeArguments="x:String" Name="var_strDocumentoNome" />
+      <Variable x:TypeArguments="x:Boolean" Name="var_booElementDownload" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="512,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extraindo Documentos&quot;]" />
-    <ui:UiElementExists DisplayName="Element Exists 'SPAN'" Exists="[var_booElementDocumento]" sap:VirtualizedContainerService.HintSize="512,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="951,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extraindo Documentos&quot;]" />
+    <ui:UiElementExists DisplayName="Element Exists 'SPAN'" Exists="[var_booElementDocumento]" sap:VirtualizedContainerService.HintSize="951,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
       <ui:UiElementExists.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c212848a-78e1-42fe-8c95-78ddc9495360" InformativeScreenshot="d8a56ebd8326b5c4d1c8f853401b7a22" Selector="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;&lt;webctrl parentid='conteudo_10174_105_1' tag='SPAN' /&gt;">
           <ui:Target.TimeoutMS>
@@ -98,15 +106,15 @@
         </ui:Target>
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <If Condition="[var_booElementDocumento = true]" sap:VirtualizedContainerService.HintSize="512,914" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[var_booElementDocumento = true]" sap:VirtualizedContainerService.HintSize="951,2594" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="476,737" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap:VirtualizedContainerService.HintSize="915,2417" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" sap:VirtualizedContainerService.HintSize="434,68" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+          <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" sap:VirtualizedContainerService.HintSize="873,68" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
             <ui:Click.CursorPosition>
               <ui:CursorPosition Position="Center">
                 <ui:CursorPosition.OffsetX>
@@ -128,30 +136,199 @@
               </ui:Target>
             </ui:Click.Target>
           </ui:Click>
-          <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
-          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Portal da Transparência - MUNICÍPIO DE ARAPONGAS" sap:VirtualizedContainerService.HintSize="434,475" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
+          <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="873,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Portal da Transparência - MUNICÍPIO DE ARAPONGAS" sap:VirtualizedContainerService.HintSize="873,2155" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
             <uix:NApplicationCard.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="376,259" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="839,1939" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <uix:NClick ClickType="Single" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left">
+                  <uix:NClick ClickType="Single" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="797,166" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left">
                     <uix:NClick.Target>
                       <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/" DesignTimeRectangle="38, 341, 13, 13" ElementType="Button" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl parentid='conteudo_10174_105_1' parentname='consulta_anexo_minuta_portal_transparencia' tag='INPUT' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='conteudo_10174_105_1' parentname='consulta_anexo_minuta_portal_transparencia' tag='INPUT' type='button' aaname='Selecionar/desselecionar todos.' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEWSURBVDhPrZKxaoNQFIb7Dr6Fg4PgC/gOHRxcfBAHhwxuDg4uLgVxEhwcHISbNKYhFYqDQ5dCwaFDl46JCSf8BywNaaKSDB/cO5zvnv+c+/D23tKt3FfyOHuazL+Sj+3uIt/7PdPuOr5flXied0aapuQ4DhmGQWVZ0ucYSZIkJ9R1TbIskyRJFIYhfXXdNMnieUmu67JA0zTavFbj4uR5zsWI0TQNKYrCEt/3KcuyYUkcx4xt2/wqpBCoqsrCKIqGJauXNem6zoWQoRhnRKqqirsblGAOiIPCHgwVw0Vno+IEQcBrNE3zV4L19hI8MEqCloUQZFkWAwEGLcSciqIYlvTgZ/4cDkz/S/9yUTKVM8kt3EHS0hH6J44Yj5kndQAAAABJRU5ErkJggg==" InformativeScreenshot="bd992b760799d22d185774a6e8858359.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector, Image">
                         <uix:TargetAnchorable.Anchors>
-                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                             <uix:Target DesignTimeRectangle="32, 336, 1160, 25" FriendlyName="'Ordenar'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;span&amp;gt;article&amp;gt;div&amp;gt;header&amp;gt;div&amp;gt;div' parentid='conteudo_10174_105_1' parentname='consulta_anexo_minuta_portal_transparencia' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;span&amp;gt;article&amp;gt;div&amp;gt;header&amp;gt;div&amp;gt;div' parentid='conteudo_10174_105_1' parentname='consulta_anexo_minuta_portal_transparencia' tag='DIV' type='' aaname='' check:text='Ordenar' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAABIwAAAAdCAYAAADII/daAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPASURBVHhe7d0/S2RXGAfgfAe/hYWFwS8g6VMtwSU2NlsFQkhtQEJCJI2FhY1bLBErg4ULEgTzxyQkLsHCIk0gYJEizZTRXU44N1wZx/fezBmPsyw+P3jgnnPu3Lf/MXfmra++/ia9++STJCIiIiIiIiIiknNdGD19/gIAAACAe/D+x1/eu2huqcFg0LgujH77/QIAAACAexAVPLVFc0spjAAAAACmJCp4aovmllIYAQAAAExJVPDUFs0tpTACAAAAmJKo4KktmltKYQQAAAAwJVHB8/jDz9Pjj74IzyYRzS01dmH06LNnxaLnAAAAADxUUcHz3gefvtmF0R//XHb6++XLxsXlVbNWGAEAAADcFBU8fdpEZ12iuaWKC6ONjY1b9vf309raWlpaWkonJyfpT4URAAAAUMnb7zy6IbqnzySfuS9RwdOnTXTWJZpbaqLCaG9v74azs7M0OzubZmZm0vb2dvrr6kphBAAAANxZVPaUFkBvcmE0iWhuqTsXRt99/0NaX19vyqKFhYX0y6+nXkkDAAAAqugqe4b383Ur2hvev+v9w2fR3v+JCp7aormlJiqMDg8Pm6Iov4p2fn6e5ubmmsJoc3MzHRwcKIwAAACAKrrKmNHiputsdD3OdbSO9rvu6RMVPLVFc0sVF0a7u7uN1dXV5ttEuUDKZdH8/HxTHu3s7CiMAAAAgComKW761vl61Og9o+vhe0f32+txRQVPnzbRWZdobqniwujHn35Oi4uLTUmUi6NcFOXr/Fra6elp860jhREAAABQQ1cp01fc9K3Hed7oepzrcUUFT5820VmXaG6p4sIo/25RfiUtl0St/IPX+Yev8zeOvJIGAAAA1BKVMqN7JevoedF+u57kWX2igqe2aG6p4sJoa2ur+ev85eXl68Io/6V+WxjlMklhBAAAANSSi5lh0Xm01/WZaD+6Z/h6WHTPuKKCp7ZobqmJCqP82tnx8XFaWVlp5LIo/wj28fG36ejoSGEEAAAAEIgKntqiuaWKC6PWxeVVGrx61cjXw2eZwggAAADgpqjg6dMmOusSzS1VVBiVip4DAAAA8FBFBU+fNtFZl2huqbELIwAAAADuJip4aovmllIYAQAAAExJVPDUFs0tpTACAAAAmJKo4KktmltKYQQAAAAwJVHBU1s0t5TCCAAAAGBKooKntmhuKYURAAAAwJREBU9t0dxStwqjp89fAAAAAPCA3SqMRERERERERETk9aQtau6iRtpnKYxERERERERERF5zhoufSdXIf88apH8BSYxzhiawZmEAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
                           </scg:List>
                         </uix:TargetAnchorable.Anchors>
                       </uix:TargetAnchorable>
                     </uix:NClick.Target>
                   </uix:NClick>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="797,166" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="1155, 340, 16, 16" ElementType="Button" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl name='more_option' tag='INPUT' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl name='more_option' tag='INPUT' type='button' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABGSURBVDhPY4gp6flPTUw7A6MK2v9HFXViKCAVww0Mz22hroH4MAxgk0PHA2MgKXiYGAgD2OTQ8WikUI5HI4VyPNgN7PkPADrcwb24IopIAAAAAElFTkSuQmCC" InformativeScreenshot="0176359672241d749cf6d673930308fd.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector, Image">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target DesignTimeRectangle="1097, 339, 43, 24" ElementType="Text" FriendlyName="'Ordenar'" FullSelectorArgument="&lt;webctrl aaname='Ordenar' parentid='conteudo_10174_105_1' parentname='consulta_anexo_minuta_portal_transparencia' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Ordenar' parentid='conteudo_10174_105_1' parentname='consulta_anexo_minuta_portal_transparencia' tag='SPAN' type='' check:text='Ordenar' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC8AAAAcCAYAAADxyeavAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACySURBVFhH7ZPbCYRADEWnJ1uwha3PLuxC9nv/7SPLfAQy2SvzkDVGIhxIbjLjQTC9Pzt5JeStCHkrniU/za8CPa8xcmaUQh69uFfmVvI6zzWDMpmf3ZczlA3JH81031KjHuVo5+/yGr2je7mrc66Zy768pPVM7a7uH7anR/ehnPveuwr5TF6SoDnKjs6gHO3IWoJ2mB95T4S8FSFvRchbEfJWpGXdyCuJHD8hb/U4lif6Al3gyBLIUs2qAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <ui:UiElementExists DisplayName="Element Exists 'SPAN'" Exists="[var_booElementDownload]" sap:VirtualizedContainerService.HintSize="797,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                    <ui:UiElementExists.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ccd852a3-a1ef-4c5c-aff4-38abcc31fe1b" InformativeScreenshot="e85cc556924e2b9f740a73317b16bda2" Selector="&lt;webctrl parentid='context_menu' parentname='114' tag='SPAN' aaname='Baixar' title='Portal da Transparência*' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:UiElementExists.Target>
+                  </ui:UiElementExists>
+                  <If Condition="[var_booElementDownload = True]" sap:VirtualizedContainerService.HintSize="797,1288" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,1129" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6525e9c8-544e-4e5e-babe-e9eb858c51f8" Selector="&lt;webctrl parentid='context_menu' parentname='114' tag='SPAN' aaname='Baixar' title='Portal da Transparência*' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                        <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'Edit'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8afa68aa-f455-4938-90f9-d7f2db55b666" InformativeScreenshot="0efa650d6e7f648a11a5ad93df14174f" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd aaname='File name:' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:UiElementExists.Target>
+                        </ui:UiElementExists>
+                        <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[var_strDocumentoNome]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">["ArquivoLicitacao"+now.ToString("ddMMyyyyHHmmss")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'File name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,226" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="HardwareEvents" Text="[var_strDocumentoNome + &quot;[k(enter)]&quot;]">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable DesignTimeRectangle="136, 369, 599, 17" ElementType="InputBox" FriendlyName="'Arquivos (1)'" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAlsAAAAVCAYAAABxCCtEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJvSURBVHhe7dw9btswGIDhHKdnyIFyht6gq4+RE3j0KQx0CJAti+HJkzeVFPVDypTTIBSCNs8DfKgl2krV6QWt5qEDAGAzYgsAYEPV2Hr4+ftbT/frx/AvAQDwOWKrMmILAGhFbFVGbAEArbwbW0/HcOL4VpxrNrtz99Jdu92ustZwHg/X8h6eL+GmLt3TcBzv8eXwOq2LLQCglfuxFWPodOn2p+2DaLPp7+HcPfbHr93uFG7wGO4pi610fr5HsQUAtHI3tuKOUNzxGf8cz/9LU/+7vy1iK0zc7Rp2v8QWANDKndjKdnuK3aE4MVau3f54De8eoqX/SjB5OZz79bRTlN4774zlx+PrtOO0fx7fEybGz/gzs2tH8/uGnapB8flpPf/Z41RiK7tHsQUAtLIeWzdfvy2DKX/OKR2PsdM/I/Wh2Aqvs52lOPE5qnS98topvOqfuZ342UVUrZ6fz4ktAKCV1dhafv3WB9QUNlkkxeMizJbri/eursXXYwCF18WuVhlGU4j1a+XD7eXk13zv/ByUYgsAaGUltmKM1GQx1Dy2Vp4Ruxdbw3HaSSvPpYnX/9vYms+JLQCglXps5c9LTZM/V1VGUjqeYyfFz7iefy5MvPZKbKVoi//7MQ+h8tq1+IpTBNo0ntkCAL5WNbaWv3dqnD6i+q8Sl7EVpo+opHxAvlxLv3ZhJbaGMLt5DqsPrNHKdas7WGsRVomteK3h54otAKCV9QfkPzWVGPuqyXasquv9lDtgYgsAaOX/j60w845cfT3u5OXrYgsAaOVbxNZHR2wBAK1UYwsAgDbEFgDAhsQWAMCGxBYAwGa67g8wEMqMYKGCmQAAAABJRU5ErkJggg==" InformativeScreenshot="bf676f42025b79ddbba578db2b24c47e.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;" SearchSteps="Selector, FuzzySelector, Image">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                  <uix:Target DesignTimeRectangle="18, 366, 115, 23" ElementType="Text" FriendlyName="'File name'" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' automationid='' check:text='File name:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHcAAAAbCAYAAABGDxCrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFISURBVGhD7ZXRrcMgDEWZinkY423AMOzCb9dgAz+cQmtcp2n7F+dWOhIQbBCnmNBaI+ATyHUM5Dok/N3uWB/BuWGx/INch0CuYyDXMZDrGMh1zAXlFkohUBDEXKnVTDFEynXOme3zclG5R+Ig96RArmP2xMlxNWcr2bOMJypLHDPm57SW+vG9pOcTEFJZY8ozdyqNao5mDnMPpa8XM9U5R4E3t8OHui9Xtjv9QJdDlzmnOD70d3+CR94eM+VsMULokmNnDzwHciXqoMxx0V5uzOBx+6xYoz/E3THWOMrx0R5egVxzXB+sdQslR2JmfKUcjTW+yvE5kGuO67Z6/17QOUVfls5NkrXGUZ/bxh5QljX6EK1xNUeXxa/KMt/WERcTpV9uLvetPUDudYFcx0CuYyDXMZDrGMh1DOQ6huVuWB+BDyDXLY3+ARXyTt1LguG5AAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, Image" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                        <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                        <uix:NClick ClickType="Single" DisplayName="Click 'OK'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="697, 435, 80, 22" ElementType="Button" FriendlyName="'OK'" FullSelectorArgument="&lt;webctrl name='btn_ok' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl name='btn_ok' tag='BUTTON' type='' aaname='OK' check:text='OK' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFQAAAAaCAYAAAApOXvdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIMSURBVGhD7ZnfSgJBFMb3EXqB9I26zLrzUsl/Zb2Ad2m7qWVdBBWZZprWjT1D9ApddBEIERFBdWMwzTfjLjPLLJor7gpz4MecHVf8+DgcLz6D6JppGRu7F2SjyEkV6yRVApeM9B5oOGTMJsfiZK0rkt0HLUaufC2xWWlzqpytaodzcMPIH3Yltms9zhG4JTs2x3cLg5GCmdTUeOGMLMcssrRS0vyD6FqZJM02MzNpdfiEwtTIqknuH55Gg6tr0oJn0fUyMxTmOhMKt3VNV/AOhuJ0JlQbOn1JhuoJ9V+SoXxC69pQHyUZCjP1hPoryVC9Q/2XZGjYdih0iLjLfef13jwLvx/KHarS4L4Tn8OgGQUdyh06HP4GipcG8d7uw6DXBlqUE/r1/RMoXhrEe/Rh0CoCPcod+v7xGSheGsR7uw+DXhtoUU7o4PUtULw0iPdefZBAh3KHPr8MAkWlwX037jkIoME1oeEwFECHiOpz97PqvXmC31fuUNXLmvFIhoo7VPWyZjySoXpC/SMZGrYduohIhtoTGolZ5Lz/qPyCxht4hugDhiIKcSY0XjhluRJc1kwOTEyMQroEQjp7QvHHBNKIkHEiQqZ9hkXI9DSbJG02eIRMe0TIGRYjt1ifc0XJiI9zFXpWO6xHfIyeRcj0zLuj5FqP0mXxMXqcLEqmQu1zETBOWn2imRV98geOTn+u8Ud1iQAAAABJRU5ErkJggg==" InformativeScreenshot="c1699a4d8fe2ed217b09189f7a03fe9c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector, Image">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                  <uix:Target DesignTimeRectangle="778, 435, 80, 22" ElementType="Button" FriendlyName="'+ Detalhes'" FullSelectorArgument="&lt;webctrl name='detalhes' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl name='detalhes' tag='BUTTON' type='' aaname='+ Detalhes' check:text='+ Detalhes' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFQAAAAaCAYAAAApOXvdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJ3SURBVGhD7ZnLThRBFIbnEXwB4I1cAq50CWFghkEeQHeC0zOAl4WJF1SEGW+b8RkMr8DChQkJMcaYqBtIjvWfrmIq5ama6rYkIdZJvlT1qXO6hz/VNcDfoBxJo7H+8D1dDt7RzQea+2+ZNcO9N0xn5zWtKTB2doa0uj2kjmJ1a8C0tw7KsX/AtHr71FZgbPVeUasoWSn2aKULXjLLdzWbL5gm85yaGyVLG7u0dAc8o8Zid8AfeLEY0sy1Pl25upmpwNRsl27cfqIF3aUGRISgM/N9+vDxSG/cHLEBzabmivEOhcoQFGOOegHtICbv0Czo30cpaN6hyWIsaN6hSYIF1d/0WdAEwYLmHZouLlxQ3NslJurUxfakDDwTYjbVa39hgroR87zYz2TX/cufwxd4JsT8Y4eenp7VJtQvrbk5XBvc61DO5O25VCOtSzk7Hwt6xFf+x89ftQn1S2t2LmbuEtsTU+f2VAX9oqBfv32vDPpcpJpQzu41uDVSnZ2X5tKai503dVVBLwvqnqHHJ19qE+qX1uycr9fN+3pC9wqtuUxa94E+8ffQT5+PaxPqd9dwbed8vaEa31psnY+YGhf0iK+8VJwC3NslVOPL2dcmZ/LS3HdtCOWqgL5SUOdveak4M5lzQd0zVCrOTIYFTX2G/s+woNL/Q6XizGRKQfUZCusDgsIKeTo6FBsyfqDZ9GxXC6p26II26RZg0ilxoXYmnum5gq7fejzeoRDzMgD7eN3YyArYx2wlw0JWI1vIlpV8biFvD3hsGyu5DytZW8i2lQwLuVdayGwls4W8x/YxW8mwkNUcFjJbyZaFzKM5Qx/tjyiTihH9BqSt1SI2JUK8AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <Sequence DisplayName="Sequence_ExtrairArquivo" sap:VirtualizedContainerService.HintSize="334,84" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,979" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ClickType="Single" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="416, 532, 16, 16" ElementType="Button" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl name='more_option' parentname='more_option' tag='INPUT' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl name='more_option' parentname='more_option' tag='INPUT' type='button' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABESURBVDhPY4gp6flPTUw7A6MK2/9HF3dhKCAVww2MyG+lroH48Lmrd8AYmxw6HhgDScHDxMDRSMGLRyOFcjziDOz5DwDB/Lvgaf5xmAAAAABJRU5ErkJggg==" InformativeScreenshot="4c45b4c1ce19701c78a13a2ed648cde5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector, Image">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                  <uix:Target DesignTimeRectangle="303, 431, 137, 100" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl parentid='conteudo_10174_105_1' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='conteudo_10174_105_1' tag='IMG' type='' aaname='' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <uix:NClick ClickType="Single" DisplayName="Click 'Baixar'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="8, 8, 0, 0" ElementType="Text" FriendlyName="'Baixar'" FullSelectorArgument="&lt;webctrl parentid='context_menu' parentname='114' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='context_menu' parentname='114' tag='SPAN' type='' aaname='Baixar' check:text='Baixar' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC4AAAATCAYAAADvXT9EAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADUSURBVEhL7Y/NCsMwDIPz/q+Xp+ihufTQo4egGsJL7ZSNskA/ELHl/Chl2zabUcUm5Ql+N0/wuwmDl1I+lDGy5xekwVtrb7HPGNnzLUPBifaoVYT1mQ846+3x3hnhDr2Il+lHUEOY6Yd8ffUsFZEG14sYAKBW8SGtgZ8Den7m90UMBVfgccUMih5H3/NGzkZcCo5e196DvubqvexsRhrcSx8581H3fEhryp8dIQwOcJEXiXyu3vcz9YDWEWnwf2Xe4Muy2L7vRzsPpdZq67oe7SyYvQBpgn5kVMuYzQAAAABJRU5ErkJggg==" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector, Image">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                  <uix:Target DesignTimeRectangle="419, 555, 155, 24" ElementType="Button" FriendlyName="'Baixar'" FullSelectorArgument="&lt;webctrl name='114' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl name='114' tag='SPAN' type='' aaname='' check:text='Baixar' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJsAAAAYCAYAAADtRY/6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKMSURBVGhD7ZVPaxNRFMWDX0E/gB+gGxVdiMWNIIhZaRcuxI3ddGU3pSDYQkALiv9AqKgVUZEoXdRijEqw2kS0SQRNFy3EoIKVQCYQg41GzHHugxeez+nMJDJvYLg/OMyZe8/b5B0yMdjcTBXRbDZZrEAk4bKxApekWzaGCRouG2OM0Mq2WvuFrz+Aj/a/LHkm+oRWttnlJt5Yv5GqtIVnok9oZRubX8PtchuTCw3hmegTWtmGrq0gsdTAAftJvhdisdg/8sJPhgkWo2VLzJdx7EZJKH75LUZe1jFwvSK8nFPGCypOvV7vSr574SfDBIfRss3m17D/UgGj79oYLvzEjvR3bE42sDezjsO5FvadXxIZL/Ryqe/kVUmk32hOyJ1TRp8xvSN+PZOf0eSrTxicyiGe72DL4w42zXUwsNDBnjNZsfODevmyAGr5yJNop5ZQ972elWL6w3jZiHuLFeyazGB3DtiaAXZOZMTML/rly9IQ5FXJcqie0PeEnOk7Pcf0RyhlIx69KGL7yTS22SLfC06XTzP5pB3JrTD07jTzc5bpD6Nls5afopwc6yo7My6kzijjhVNJ1KdTSXQvn/rM6yzTP8bKVnufxsqdE1gvXHUVZSjrBl2+LrUYG83JO81JqpfSzzL/h7GylWZGRJlWH4zj2dQQFi8eRX56WIg8zWhHGcp6QZevS+I2l099ru/UGaF6pj+Mla04fRz2d7KrhxMH8eT0ISHy6k5kmchhrGzZC0fw7fUV1J6fE8KH+39JzilDWSZ6BF62VquFarWKdCKOL6kEPs+dchVlKEtn6CwTHQIvm2VZKJVKSN06i7ujg75EWTpDZ5noYOwzyjBcNsYYXDbGGFw2xhDAH43EDY82QGKxAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                        <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'Edit'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8afa68aa-f455-4938-90f9-d7f2db55b666" InformativeScreenshot="0efa650d6e7f648a11a5ad93df14174f" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd aaname='File name:' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:UiElementExists.Target>
+                        </ui:UiElementExists>
+                        <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[var_strDocumentoNome]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">["ArquivoLicitacao"+now.ToString("ddMMyyyyHHmmss")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'File name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,226" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" Text="[var_strDocumentoNome + &quot;[k(enter)]&quot;]">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable DesignTimeRectangle="136, 369, 599, 17" ElementType="InputBox" FriendlyName="'Arquivos (1)'" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAlsAAAAVCAYAAABxCCtEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJvSURBVHhe7dw9btswGIDhHKdnyIFyht6gq4+RE3j0KQx0CJAti+HJkzeVFPVDypTTIBSCNs8DfKgl2krV6QWt5qEDAGAzYgsAYEPV2Hr4+ftbT/frx/AvAQDwOWKrMmILAGhFbFVGbAEArbwbW0/HcOL4VpxrNrtz99Jdu92ustZwHg/X8h6eL+GmLt3TcBzv8eXwOq2LLQCglfuxFWPodOn2p+2DaLPp7+HcPfbHr93uFG7wGO4pi610fr5HsQUAtHI3tuKOUNzxGf8cz/9LU/+7vy1iK0zc7Rp2v8QWANDKndjKdnuK3aE4MVau3f54De8eoqX/SjB5OZz79bRTlN4774zlx+PrtOO0fx7fEybGz/gzs2tH8/uGnapB8flpPf/Z41RiK7tHsQUAtLIeWzdfvy2DKX/OKR2PsdM/I/Wh2Aqvs52lOPE5qnS98topvOqfuZ342UVUrZ6fz4ktAKCV1dhafv3WB9QUNlkkxeMizJbri/eursXXYwCF18WuVhlGU4j1a+XD7eXk13zv/ByUYgsAaGUltmKM1GQx1Dy2Vp4Ruxdbw3HaSSvPpYnX/9vYms+JLQCglXps5c9LTZM/V1VGUjqeYyfFz7iefy5MvPZKbKVoi//7MQ+h8tq1+IpTBNo0ntkCAL5WNbaWv3dqnD6i+q8Sl7EVpo+opHxAvlxLv3ZhJbaGMLt5DqsPrNHKdas7WGsRVomteK3h54otAKCV9QfkPzWVGPuqyXasquv9lDtgYgsAaOX/j60w845cfT3u5OXrYgsAaOVbxNZHR2wBAK1UYwsAgDbEFgDAhsQWAMCGxBYAwGa67g8wEMqMYKGCmQAAAABJRU5ErkJggg==" InformativeScreenshot="bf676f42025b79ddbba578db2b24c47e.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;" SearchSteps="Selector, FuzzySelector, Image">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="18, 366, 115, 23" ElementType="Text" FriendlyName="'File name'" FullSelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;ctrl name='Explorer Pane' role='pane' /&gt;&lt;ctrl name='Folder Layout Pane' role='pane' /&gt;&lt;ctrl name='Details Pane' role='pane' /&gt;&lt;ctrl name='File name:' role='text' automationid='' check:text='File name:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHcAAAAbCAYAAABGDxCrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFISURBVGhD7ZXRrcMgDEWZinkY423AMOzCb9dgAz+cQmtcp2n7F+dWOhIQbBCnmNBaI+ATyHUM5Dok/N3uWB/BuWGx/INch0CuYyDXMZDrGMh1zAXlFkohUBDEXKnVTDFEynXOme3zclG5R+Ig96RArmP2xMlxNWcr2bOMJypLHDPm57SW+vG9pOcTEFJZY8ozdyqNao5mDnMPpa8XM9U5R4E3t8OHui9Xtjv9QJdDlzmnOD70d3+CR94eM+VsMULokmNnDzwHciXqoMxx0V5uzOBx+6xYoz/E3THWOMrx0R5egVxzXB+sdQslR2JmfKUcjTW+yvE5kGuO67Z6/17QOUVfls5NkrXGUZ/bxh5QljX6EK1xNUeXxa/KMt/WERcTpV9uLvetPUDudYFcx0CuYyDXMZDrGMh1DOQ6huVuWB+BDyDXLY3+ARXyTt1LguG5AAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, Image" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                      </Sequence>
+                    </If.Else>
+                  </If>
                 </Sequence>
               </ActivityAction>
             </uix:NApplicationCard.Body>

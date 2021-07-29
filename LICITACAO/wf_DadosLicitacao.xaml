@@ -1,21 +1,28 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="wf_DadosLicitacao" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="wf_DadosLicitacao" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:uca="clr-namespace:UiPath.Cryptography.Activities;assembly=UiPath.Cryptography.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="arg_in_strLinkPortal" Type="InArgument(x:String)" />
     <x:Property Name="arg_out_strSituacaoLicitacao" Type="OutArgument(x:String)" />
-    <x:Property Name="arg_strDataAbertura" Type="OutArgument(x:String)" />
-    <x:Property Name="arg_out_strValorReferencia" Type="InArgument(x:String)" />
-    <x:Property Name="arg_out_ValorHomologado" Type="InArgument(x:String)" />
+    <x:Property Name="arg_out_strValorReferencia" Type="OutArgument(x:String)" />
+    <x:Property Name="arg_in_strNumLicitacao" Type="InArgument(x:String)" />
+    <x:Property Name="arg_in_strAnoLicitacao" Type="InArgument(x:String)" />
+    <x:Property Name="arg_in_strTipoLicitacao" Type="InArgument(x:String)" />
+    <x:Property Name="arg_out_strHashLicitacao" Type="OutArgument(x:String)" />
+    <x:Property Name="arg_out_strValorHomologado" Type="OutArgument(x:String)" />
+    <x:Property Name="arg_out_strDataAbertura" Type="OutArgument(x:String)" />
   </x:Members>
-  <this:wf_DadosLicitacao.arg_out_strValorReferencia>
+  <this:wf_DadosLicitacao.arg_in_strNumLicitacao>
     <InArgument x:TypeArguments="x:String" />
-  </this:wf_DadosLicitacao.arg_out_strValorReferencia>
-  <this:wf_DadosLicitacao.arg_out_ValorHomologado>
+  </this:wf_DadosLicitacao.arg_in_strNumLicitacao>
+  <this:wf_DadosLicitacao.arg_in_strAnoLicitacao>
     <InArgument x:TypeArguments="x:String" />
-  </this:wf_DadosLicitacao.arg_out_ValorHomologado>
+  </this:wf_DadosLicitacao.arg_in_strAnoLicitacao>
+  <this:wf_DadosLicitacao.arg_in_strTipoLicitacao>
+    <InArgument x:TypeArguments="x:String" />
+  </this:wf_DadosLicitacao.arg_in_strTipoLicitacao>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>915,3408</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>915,4061</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>wf_DadosLicitacao_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="70">
@@ -55,10 +62,13 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Security</x:String>
+      <x:String>UiPath.Cryptography</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>UiPath.Cryptography.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -84,35 +94,36 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="wf_DadosLicitacao" sap:VirtualizedContainerService.HintSize="644,3303" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="wf_DadosLicitacao" sap:VirtualizedContainerService.HintSize="644,3996" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="602,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Buscando dados do edital&quot;]" />
-    <Sequence DisplayName="Sequence_DadosEdital" sap:VirtualizedContainerService.HintSize="602,2949" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Sequence_DadosEdital" sap:VirtualizedContainerService.HintSize="602,3520" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Portal da Transparência - MUNICÍPIO DE ARAPONGAS" sap:VirtualizedContainerService.HintSize="560,2857" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Portal da Transparência - MUNICÍPIO DE ARAPONGAS" sap:VirtualizedContainerService.HintSize="560,3428" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
         <uix:NApplicationCard.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="526,2601" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="Fazer" sap:VirtualizedContainerService.HintSize="526,3212" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="var_booElementItens" />
                 <Variable x:TypeArguments="x:Boolean" Name="var_booValorHomologado" />
@@ -126,21 +137,21 @@
                 <uix:NGetText.Target>
                   <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="1173, 214, 72, 20" ElementType="InputBox" FriendlyName="'21/05/2021'" FullSelectorArgument="&lt;webctrl name='minuta.edital.dataAberturaProposta' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='minuta.edital.dataAberturaProposta' tag='INPUT' type='text' /&gt;" InformativeScreenshot="475b175a8502083bcd0b325fae38227a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector">
                     <uix:TargetAnchorable.Anchors>
-                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                         <uix:Target DesignTimeRectangle="1073, 214, 98, 18" ElementType="Text" FriendlyName="'Abertura'" FullSelectorArgument="&lt;webctrl aaname='Abertura' parentid='conteudo_10174_105_1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Abertura' parentid='conteudo_10174_105_1' tag='LABEL' type='' check:text='Abertura' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGYAAAAWCAYAAAAy/emjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADLSURBVGhD7ZVRCsMgEER7ae+Xm9kKHRgGTSwpZarzYFFn13z4PvI4jqMGPyLGlIgxJWJMiRhTIsaUbcSUUt67/2BJMU2Cirgr5tdiI2aSiLkJP6DuuZhejj2vPIMVaM79tkcxema2EsPgfJZzbzQHRvcU7p3NRcxr1ULOzJ41b7SMa4alxOgDoNBjRjkYzYPZ712dRywnRrl6sE9z8I172mO2EsPF9HKdafRmuJApvblGbxYs949ZhYgxJWJMiRhTIsaUiDElYiyp9QnsEyMZiBoIEQAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
                       </scg:List>
                     </uix:TargetAnchorable.Anchors>
                   </uix:TargetAnchorable>
                 </uix:NGetText.Target>
                 <uix:NGetText.Text>
-                  <OutArgument x:TypeArguments="x:String">[arg_strDataAbertura]</OutArgument>
+                  <OutArgument x:TypeArguments="x:String">[arg_out_strDataAbertura]</OutArgument>
                 </uix:NGetText.Text>
               </uix:NGetText>
               <uix:NGetText DisplayName="Get Text 'Situação'" sap:VirtualizedContainerService.HintSize="484,166" sap2010:WorkflowViewState.IdRef="NGetText_2">
                 <uix:NGetText.Target>
                   <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="140, 214, 171, 20" ElementType="DropDown" FriendlyName="'Homologada'" FullSelectorArgument="&lt;webctrl name='situacao' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl name='situacao' tag='SELECT' type='' /&gt;" InformativeScreenshot="188ef23e46fe704d6f0f5322bc77be3b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector">
                     <uix:TargetAnchorable.Anchors>
-                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                         <uix:Target DesignTimeRectangle="40, 214, 98, 18" ElementType="Text" FriendlyName="'Situação'" FullSelectorArgument="&lt;webctrl aaname='Situação' parentid='conteudo_10174_105_1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Situação' parentid='conteudo_10174_105_1' tag='LABEL' type='' check:text='Situação' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGYAAAAWCAYAAAAy/emjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADUSURBVGhD7dUBCsMgDAXQXdr7eTPXFD4ESdRWC0H/A6kJrYP8bf3lnAvFw2CCYjBBMZigGExQDCYoBrNQSule2M/YNhgMyRoWrqvp82c/Y8tgekP5KpiVjgoGfbliodZ0Xd8LVt/qiVbfc8RfGWBfD6RXg/e8xbtX161zjnj510NqDUvoWvZ6oWcZubeuPQzm4tWjffH0jB4Gc/Hq0b54eoawzoFtX/56Qb236jd90D2vr9W1dsQv5iutwc5iMC9Y3/7VGExQDCYoBhMUgwmKwYRUyh8+hyF7PqtCYQAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
                       </scg:List>
                     </uix:TargetAnchorable.Anchors>
@@ -152,7 +163,7 @@
               </uix:NGetText>
               <ui:UiElementExists DisplayName="Element Exists 'SPAN'" Exists="[var_booElementItens]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                 <ui:UiElementExists.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d8df463d-c2eb-431f-a072-48c5998b4f3b" InformativeScreenshot="16552dc7dd9f24cfb40778a8fff9ae41" Selector="[&quot;&lt;webctrl css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;span' idx='2' parentid='conteudo_10174_105_1' tag='SPAN' /&gt;&quot;QD]">
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d8df463d-c2eb-431f-a072-48c5998b4f3b" InformativeScreenshot="16552dc7dd9f24cfb40778a8fff9ae41" Selector="&lt;webctrl css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ul&amp;gt;li&amp;gt;span' idx='2' parentid='conteudo_10174_105_1' tag='SPAN' /&gt;">
                     <ui:Target.TimeoutMS>
                       <InArgument x:TypeArguments="x:Int32" />
                     </ui:Target.TimeoutMS>
@@ -162,9 +173,9 @@
                   </ui:Target>
                 </ui:UiElementExists.Target>
               </ui:UiElementExists>
-              <If Condition="[var_booElementItens]" sap:VirtualizedContainerService.HintSize="484,546" sap2010:WorkflowViewState.IdRef="If_1">
+              <If Condition="[var_booElementItens]" sap:VirtualizedContainerService.HintSize="484,1156" sap2010:WorkflowViewState.IdRef="If_1">
                 <If.Then>
-                  <Sequence sap:VirtualizedContainerService.HintSize="376,368" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,978" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -192,12 +203,29 @@
                         </ui:Target>
                       </ui:Click.Target>
                     </ui:Click>
-                    <uix:NGetText DisplayName="Get Text '19.500,00'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NGetText_3">
-                      <uix:NGetText.Target>
-                        <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="1467, 278, 48, 15" ElementType="Text" FriendlyName="'19.500,00'" FullSelectorArgument="&lt;webctrl aaname='19.500,00' css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;span' parentid='conteudo_10174_105_1' parentname='consulta_item_minuta_portal' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;span' parentid='conteudo_10174_105_1' parentname='consulta_item_minuta_portal' tag='SPAN' type='' /&gt;" InformativeScreenshot="3f85e5187acbba17d8d023e6bc0a4706.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector">
+                    <uix:NClick ClickType="Single" DisplayName="Click 'Máx. Total'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Right">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="1389, 230, 131, 18" ElementType="Text" FriendlyName="'Máx. Total'" FullSelectorArgument="&lt;webctrl parentid='conteudo_10174_105_1' parentname='total_por_item' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='conteudo_10174_105_1' parentname='total_por_item' tag='SPAN' type='' aaname='Máx. Total' check:text='Máx. Total' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIcAAAAWCAYAAADq3Y/sAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEoSURBVGhD7drBbQIxEIVheqIF7jlRA6IHJBqghShdcEwHKOfcEW04IqtZTR4ztgO+7W/pE+uZsZDME1xYfX1fC+C97Y5lfziV1cf5UgBvDkeUHCwb4UCKcCBFOJAiHEgRDqS6wrHebH+9Wu9hZ1U0a1p90zuHyfBwjPoAsveMjJ7DZA7H++et3EVDdqn+crOa52s6Y/tMNGc1X/c1q0c1q9sz2v6EIxq4s0uNLjq7cJ31/FxGZ/U566neOTzq/lnxr7Wa0p7tW6Lz2q/1VDSHun+Fw551nz3X9i3Ree339myvc6gbFo6oHvX8TI0/Y/tne7b3dbQN/+bI6IyeVXrO11p1v9e6P4e6rnBgmQgHUoQDqTkc0T+BsGxzOAqLJYtwsNI1heNUfgAiMNyBsUO5/AAAAABJRU5ErkJggg==" InformativeScreenshot="8f91fe2dc8ccaeda6b7e22ee40437f55.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="Selector, FuzzySelector, Image">
                           <uix:TargetAnchorable.Anchors>
                             <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                              <uix:Target DesignTimeRectangle="1373, 276, 147, 20" ElementType="Button" FriendlyName="'19.500,00'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div' parentid='conteudo_10174_105_1' parentname='consulta_item_minuta_portal' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div' parentid='conteudo_10174_105_1' parentname='consulta_item_minuta_portal' tag='DIV' type='' aaname='' check:text='19.500,00' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJcAAAAYCAYAAAD3eW90AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHuSURBVGhD7ZixTgJBEIZ9BF7AikegpLCxsJBYY2OHsSaxQWNhR7A1wcaG1sbCWNpQaI7YITbXSELJI4zMkTXjsnPOcbeFyT/JF3b+/e8K5s/ewQ6hUBXX0ekVnV0MaOfk/CYT+BOAKvgJV5asVd0/Tej9cw5AKThHCBeIAsIFooFwgWggXCAapnD1+7fUbrep1TregHXel34AGPPJdXndp2Zzj4bDYdYvl0tKF4us54D5flCORqOx0UvknsVTVJdoHk13mMPFQer1erR/cEgPj8+/dNmDcmgDk702TItuWUvKXGsOF8NB4hOMA+ZOMFAtblD+8PJ6qfuar8trNV2ieTRdUihcDIeqVtulbrcb3AfV4A/LMkyny325Dvl83e81LaTLnikULn788XtXp9Oh6XQa9IBq+GuooWFKpN/35ul+r2khXfaMOVwyWPwy7/Q0TfGIjEBoWI7QcH2kR3otukTzaLrEFC4OVr1ez7gbjShJEnoZjzP48Ri6MShH3neq7Umd16739ZhriSlcHCA+tfgmLmQO1vhXpPSD8vgD497h6yFPyGfVLZ483WEKl/tPS0M+JsH/RgvKNpjCBcA2IFwgGoXCNZnN6e3jK+N1tv5MVlrICwBOLhANNVwAVMFGuFCoqgrhQkWrdbgG9A3KKnIvfJQnkQAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                              <uix:Target DesignTimeRectangle="1257, 215, 265, 14" ElementType="Text" FriendlyName="'Cotação'" FullSelectorArgument="&lt;webctrl aaname='Cotação' parentid='conteudo_10174_105_1' parentname='consulta_item_minuta_portal' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Cotação' parentid='conteudo_10174_105_1' parentname='consulta_item_minuta_portal' tag='SPAN' type='' check:text='Cotação' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQkAAAAOCAYAAAA8GuloAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADkSURBVGhD7dSxDQIxDIVhdmIFeipmQOyAxAK3GzU9ewSdUCTr4fgS0RDzF59EbJ+o3tvdH88CAOp4vpXLdSmUBAAXJQEgREkksz+cPnh3Vs9Ny+h/YT6URCJeUHuCS7gRoSQS2Qp7LRF7Z2d17s28+9FbzImSSCQKo91pcEe+szvVul1/b32L30VJJBIFUXcaYt0p727kVt+YByWRSBTEKLRbu/rWO51Ft963mAMlkYgNqbezv/Ud7erbznWn79Yc86EkkqmB9ILZO7dvO//2FnOiJDCE0P8fSgJAiJIAEHqXxFJeKpth3StbopQAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <uix:NClick ClickType="Single" DisplayName="Click 'Somar'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="1358, 238, 153, 14" ElementType="Text" FriendlyName="'Somar'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentid='context_menu' tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='Somar' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentid='context_menu' tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='Somar' type='' check:text='Somar' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJ0AAAASCAYAAABBwNzbAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADjSURBVGhD7dQxCgIxEEbh3MkreAUP5SHEM4hgZWsp1hbpvMfKrIzMSuImRqeI74MfQoyVD8Plehtatj2ck/etWyxX41rvS6bffV3qrW7uc13pu3/aGJ2Ew5jHJtEBv0Z0cCed7Y+n+ehCCJMBn6qKDviG5uhS/3727nUqdSdy9+hHVXSpQFTt2Sp5g34UR6ckCg0jF0vp2U7ZM/pUHZ3QMHKxzJ3tnci9R5+IDu6e0cnhXXQSg85K3Zee7ZQ9o0/S2XqzG8ZfuvSfDmghncUYiQ5+iA7uiA7uiA7uiA7uHtHF4Q4zPhAHUrHdawAAAABJRU5ErkJggg==" InformativeScreenshot="833099c6c4428145719e876976a080b3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                    <uix:NGetText DelayAfter="0.2" DisplayName="Get Text 'Detalhar Licitação.A'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NGetText_6">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="607, 395, 341, 36" FriendlyName="'Detalhar Licitação.A'" FullSelectorArgument="&lt;webctrl aria-role='alert' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='alert' tag='DIV' type='' /&gt;" InformativeScreenshot="b3113172b070635633365b7e47e2ce2c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência*' /&gt;" SearchSteps="Selector, FuzzySelector">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                              <uix:Target DesignTimeRectangle="738, 470, 80, 22" ElementType="Button" FriendlyName="'OK'" FullSelectorArgument="&lt;webctrl name='btn_ok' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl name='btn_ok' tag='BUTTON' type='' aaname='OK' check:text='OK' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFQAAAAaCAYAAAApOXvdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEvSURBVGhD7ZlNisJAFIRzBG+QG7nWI8wBPIXgz2oWs3Ar6MJN4hWG8QgOuBgQREQEdROhtcRI075GRx52C1XwQfdLQoqPrNKJYVSTND5HhuhxFfrRGpi03jGVapP8g7TePbkb3gpNax2Tf08vHy7zaPKf37PUG6GwzTwXuKNQxVCocihUORSqnKiFooeNG3fmu++VwfujFCp1cGf2PobOCHq8jVBEkhhD3zLoIgotikNQfB3sOdYxdLVBH1HodrcPiq+DPS/XMfQtQRdR6Gq9CYqvgz33rUOCHqLQ+WIZFKmDO7u3DwE6iEJnf/PgoIeNdN3dS/e9Erw/WqHvCIUqQ6HKUKgyFKqMKBS/8XvjifgA8QNn4hEIDppwAbbJ45wP6drCIR3RIfnqZ4ZokZkjLZ+b26rvA/0AAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
                             </scg:List>
                           </uix:TargetAnchorable.Anchors>
                         </uix:TargetAnchorable>
@@ -206,6 +234,18 @@
                         <OutArgument x:TypeArguments="x:String">[arg_out_strValorReferencia]</OutArgument>
                       </uix:NGetText.Text>
                     </uix:NGetText>
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="%[k(enter)]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="0d48e655-47d7-463f-9835-26bab6891ccf">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
                   </Sequence>
                 </If.Then>
               </If>
@@ -256,9 +296,9 @@
                     </ui:Click>
                     <uix:NClick ClickType="Single" DisplayName="Click 'Lance Total'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Right">
                       <uix:NClick.Target>
-                        <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="963, 220, 82, 22" ElementType="Text" FriendlyName="'Lance Total'" FullSelectorArgument="&lt;webctrl parentid='conteudo_10174_105_1' parentname='valor_total' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='conteudo_10174_105_1' parentname='valor_total' tag='SPAN' type='' aaname='Lance Total' check:text='Lance Total' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFYAAAAaCAYAAAAtzKvgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEZSURBVGhD7ZTRCQIxEETtyRZswfLELvy0A/Hb/8M2TqKsjONuLtGsIMzHw8vsJBcf4up8mWYxjv3hdP+U2MFIbBISm4TEJiGxSUhsEhKbhMQm0SR2vdm6+a8o7/fwusbS3Gjt9fIXYo0WocZfi7UvakQ5znheyxhv7u3DzHIvs9yeRzLsF8uXjS7vnVXbi/Cstg+fmdbeNzzF7o7Xt6ERvbzkjOXc854xY7iDPVzzvDZjvN4oXsRGcqOXY167LPdwFmUepVc7q2dma+6N4uO/Arwcr7nPPZxFmUfpRWf1zmyN+UiaxTJLOe/nNfY5wxzxZtEeznHNOe4bRZNY0Y/EJiGxSUhsEhKbhMQmIbFJSGwSEpvEQ+w03wAZtdcj6abeWgAAAABJRU5ErkJggg==" InformativeScreenshot="ea15984c6364ef90d69485f1080b5e2e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector, Image">
+                        <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="963, 220, 82, 22" ElementType="Text" FriendlyName="'Lance Total'" FullSelectorArgument="&lt;webctrl parentid='conteudo_10174_105_1' parentname='valor_total' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='conteudo_10174_105_1' parentname='valor_total' tag='SPAN' type='' aaname='Lance Total' check:text='Lance Total' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFYAAAAaCAYAAAAtzKvgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEZSURBVGhD7ZTRCQIxEETtyRZswfLELvy0A/Hb/8M2TqKsjONuLtGsIMzHw8vsJBcf4up8mWYxjv3hdP+U2MFIbBISm4TEJiGxSUhsEhKbhMQm0SR2vdm6+a8o7/fwusbS3Gjt9fIXYo0WocZfi7UvakQ5znheyxhv7u3DzHIvs9yeRzLsF8uXjS7vnVXbi/Cstg+fmdbeNzzF7o7Xt6ERvbzkjOXc854xY7iDPVzzvDZjvN4oXsRGcqOXY167LPdwFmUepVc7q2dma+6N4uO/Arwcr7nPPZxFmUfpRWf1zmyN+UiaxTJLOe/nNfY5wxzxZtEeznHNOe4bRZNY0Y/EJiGxSUhsEhKbhMQmIbFJSGwSEpvEQ+w03wAZtdcj6abeWgAAAABJRU5ErkJggg==" InformativeScreenshot="ea15984c6364ef90d69485f1080b5e2e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência*' /&gt;" SearchSteps="FuzzySelector, Image">
                           <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                               <uix:Target DesignTimeRectangle="855, 215, 95, 33" FriendlyName="'Desconto (%)'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;header&amp;gt;div&amp;gt;table' parentid='conteudo_10174_105_1' parentname='consulta_lance_pregao_portal' tag='TABLE' /&gt;&lt;webctrl name='lneporcentagem' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;header&amp;gt;div&amp;gt;table' parentid='conteudo_10174_105_1' parentname='consulta_lance_pregao_portal' tag='TABLE' /&gt;&lt;webctrl name='lneporcentagem' tag='TD' type='' aaname='' check:text='Desconto (%)' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGMAAAAlCAYAAABWOlfkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFbSURBVGhD7ZPRbYQwEETpKS2khdSXLtJFdN/5TwF04Mgfc1pN1hgcjEZhkJ7YnV0jjqdb1nUtRoPl/eOzGA2Wx9d3qdQGtbkWfHvLEMAyhLAMISxDCMsQwjKEsAwhLEMIyxDCMoSwDCF2y3h5fftFtnc1f3kPnM1+T+yz+QwOyeD+ihfsMfoO8RzqLGv1MxiWkWW1B1nWyrcyzuM8yzhHxmAW9/jOtPKzOE0G1+h757Isnm/1WZ3NeB5nXGM/gp24N4tTZTAxxx6y2GdZ7EdnWY+Mn4G+ded6BlP+GRl1jp3es7gfnWU9slbOdZbNYlhG7Y++KHayXX4W96i57814HmdbGeosm8UhGUxvh7PW7laGvNVnZ7KM4VnW93bOZreM/8bRDztbROW2Mip7P3Dds4ybYRlCWIYQliGEZQhhGUJYhhCWIYRlCGEZQjxl1MJosBRfMpdlyFyl/AAnM4C7K7q2VgAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
                             </scg:List>
                           </uix:TargetAnchorable.Anchors>
@@ -267,9 +307,9 @@
                     </uix:NClick>
                     <uix:NClick ClickType="Single" DisplayName="Click 'Somar'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left">
                       <uix:NClick.Target>
-                        <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="986, 235, 153, 14" ElementType="Text" FriendlyName="'Somar'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentid='context_menu' tag='TABLE' /&gt;&lt;webctrl tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentid='context_menu' tag='TABLE' /&gt;&lt;webctrl tag='TD' type='' aaname='Somar' check:text='Somar' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJ0AAAASCAYAAABBwNzbAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD6SURBVGhD7ZTNCQIxEEbTky3YgkVZhFiDF7sQzx5ys4+VWZllDBM32Z8cwnvwweTbISvy2HA4nobn6z3Gzv86L7KXu6v2mZ5tv2Wu94fbe++zvyc9p/vpnn2W69J4d2pyOzV9yV3aebvefk3kvx+lk4GQVglqH8DeIB00Rzw7X27z0oUQfgKwlCrpALZgtXTe1892aRSvE3I99EOVdJ4gSu1sKdmBfiiWThEpVIycLKWzjWJn6JNq6QQVIyfL3Gw7IbcPfYJ00Jxi6UQGjcXrS2cbxc7QJ4u+dABrQDpoziSdDEgHLZik0wPA3ohnMUakg3YgHTTnK10cPpS93H/WU2nfAAAAAElFTkSuQmCC" InformativeScreenshot="3ad6825c26697f00fb222f0e08db28d5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector, Image">
+                        <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/grupo/1/item/1/tipo/1" DesignTimeRectangle="986, 235, 153, 14" ElementType="Text" FriendlyName="'Somar'" FullSelectorArgument="&lt;webctrl aria-role='presentation' parentid='context_menu' tag='TABLE' /&gt;&lt;webctrl tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' parentid='context_menu' tag='TABLE' /&gt;&lt;webctrl tag='TD' type='' aaname='Somar' check:text='Somar' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJ0AAAASCAYAAABBwNzbAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD6SURBVGhD7ZTNCQIxEEbTky3YgkVZhFiDF7sQzx5ys4+VWZllDBM32Z8cwnvwweTbISvy2HA4nobn6z3Gzv86L7KXu6v2mZ5tv2Wu94fbe++zvyc9p/vpnn2W69J4d2pyOzV9yV3aebvefk3kvx+lk4GQVglqH8DeIB00Rzw7X27z0oUQfgKwlCrpALZgtXTe1892aRSvE3I99EOVdJ4gSu1sKdmBfiiWThEpVIycLKWzjWJn6JNq6QQVIyfL3Gw7IbcPfYJ00Jxi6UQGjcXrS2cbxc7QJ4u+dABrQDpoziSdDEgHLZik0wPA3ohnMUakg3YgHTTnK10cPpS93H/WU2nfAAAAAElFTkSuQmCC" InformativeScreenshot="3ad6825c26697f00fb222f0e08db28d5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência*' /&gt;" SearchSteps="FuzzySelector, Image">
                           <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                               <uix:Target DesignTimeRectangle="948, 213, 99, 37" FriendlyName="'Lance Total'" FullSelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;header&amp;gt;div&amp;gt;table' parentid='conteudo_10174_105_1' parentname='consulta_lance_pregao_portal' tag='TABLE' /&gt;&lt;webctrl name='valor_total' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='presentation' css-selector='body&amp;gt;section&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;section&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;header&amp;gt;div&amp;gt;table' parentid='conteudo_10174_105_1' parentname='consulta_lance_pregao_portal' tag='TABLE' /&gt;&lt;webctrl name='valor_total' tag='TD' type='' aaname='' check:text='Lance Total' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGMAAAAlCAYAAABWOlfkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGdSURBVGhD7ZtBTsQwDEVzJ67AFTge4hYsuQFizR6x7g068uJLH8tOE5FGTusvPcn5djtpvjqzmrJt257EoLy9f+5JDMrX988uyAJ1MhecfYYRgAwjEBlGIDKMQGQYgcgwApFhBCLDCESGEYgMIxAZRiBOC+Pp+cX0ZyGfb2HNgqM+aJ3r5bJhgJYQwJJhvH78mj7jbRiHAzyfe7pf8zRW37qOPfiWBx/1SLrDkCCA1QctG9YP6D2wda/atYzu1a7jWtM69x+6wuAgjgLxNiy+Br6es2r2NHqG53it+7WexpobRXMYVhDAmvc2zH7tAfUc9zzPQuZq9+rpYa3nRtH1ZvRgbZgfSK/1vJ7jnudZyJx3r94e1uyP5NQwNEe+vl72ckeGhzEC2csdlWEE0nJhlFL+cCUtGcZVdZkwrLeFPQ1keSLPP1PLfk2xeN1bs1pmztSyP+ByWDgw7xBbawbiepaWDUOEA/MO8ahmT+TNz1KGQfLmZ2nZ3wzrILXfWjMQ17O09JtxNWUYgRT2zzJ31PwvxgZlGIF0zzD2/QGXEUVOdUOu5QAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
                             </scg:List>
                           </uix:TargetAnchorable.Anchors>
@@ -279,16 +319,16 @@
                     <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
                     <uix:NGetText DisplayName="Get Text 'Detalhar Licitação.A'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NGetText_5">
                       <uix:NGetText.Target>
-                        <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/" DesignTimeRectangle="588, 395, 361, 36" FriendlyName="'Detalhar Licitação.A'" FullSelectorArgument="&lt;webctrl aria-role='alert' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='alert' tag='DIV' type='' /&gt;" InformativeScreenshot="cca695bf336a8493250ba1fdfe27aeac.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência - MUNICÍPIO DE ARAPONGAS' /&gt;" SearchSteps="FuzzySelector">
+                        <uix:TargetAnchorable BrowserURL="https://arapongas.atende.net/?pg=transparencia#!/" DesignTimeRectangle="588, 395, 361, 36" FriendlyName="'Detalhar Licitação.A'" FullSelectorArgument="&lt;webctrl aria-role='alert' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='alert' tag='DIV' type='' /&gt;" InformativeScreenshot="cca695bf336a8493250ba1fdfe27aeac.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal da Transparência*' /&gt;" SearchSteps="FuzzySelector">
                           <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                               <uix:Target DesignTimeRectangle="738, 470, 80, 22" ElementType="Button" FriendlyName="'OK'" FullSelectorArgument="&lt;webctrl name='btn_ok' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl name='btn_ok' tag='BUTTON' type='' aaname='OK' check:text='OK' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFQAAAAaCAYAAAApOXvdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAExSURBVGhD7ZkxCsIwFIZ7BG/gjZz1BvUAnkIUNxEXJxFdHFrPIF7BwUEoiIgI6qIQ/cFKSF+wytOk8n74IHmp9OejkwmUhDVBoztVAh9PofX2RJVrHVWqNIU3KFc7qt4aZ4XiYDZfPj5cSd7AGT7EjFDYlnwWuBOhjBGhzBGhzBGhzPFaKHromDFntud+GbzfS6FUB3Om733ojKBHYYQilEQf+qZBF1Lo5XJ1iq2DPsfah6466EMKPZ7OTrF10Ofp2oe+KehCCt3tD06xddDntrVL0IMUmmy2TqE6mLNXexegAyl0tU6cgx461Lm5p577JXi/t0KLiAhlRoQyI0KZEaHMkELxN/4gXpA/EOzAGa6PMkJDXNLdD2BbyA8+xJC6pBN4CHrDSH2T/igm5/9JpG7Rjpoii1gl+QAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
                             </scg:List>
                           </uix:TargetAnchorable.Anchors>
                         </uix:TargetAnchorable>
                       </uix:NGetText.Target>
                       <uix:NGetText.Text>
-                        <OutArgument x:TypeArguments="x:String">[arg_out_ValorHomologado]</OutArgument>
+                        <OutArgument x:TypeArguments="x:String">[arg_out_strValorHomologado]</OutArgument>
                       </uix:NGetText.Text>
                     </uix:NGetText>
                     <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
@@ -315,6 +355,7 @@
         </uix:NApplicationCard.TargetApp>
       </uix:NApplicationCard>
     </Sequence>
+    <uca:HashText Algorithm="SHA256" DisplayName="Hash Text" Encoding="[System.Text.Encoding.UTF8]" sap:VirtualizedContainerService.HintSize="602,82" sap2010:WorkflowViewState.IdRef="HashText_1" Input="[arg_out_strSituacaoLicitacao+arg_out_strDataAbertura+arg_in_strNumLicitacao+arg_in_strAnoLicitacao+arg_in_strTipoLicitacao]" Result="[arg_out_strHashLicitacao]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="602,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Fim Dados Licitacao&quot;]" />
   </Sequence>
 </Activity>

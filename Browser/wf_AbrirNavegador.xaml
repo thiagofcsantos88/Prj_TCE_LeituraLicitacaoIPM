@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>915,4804</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>588,2438</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>wf_AbrirNavegador_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -115,7 +115,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:KillProcess>
-                <uix:NApplicationCard sap2010:Annotation.AnnotationText="INICIA O BROWSER" AttachMode="ByInstance" CloseMode="Always" DisplayName="INICIA BROWSER" sap:VirtualizedContainerService.HintSize="434,1232" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Always" Version="V1" WindowResize="Maximize">
+                <uix:NApplicationCard sap2010:Annotation.AnnotationText="INICIA O BROWSER" AttachMode="ByInstance" CloseMode="Never" DisplayName="INICIA BROWSER" sap:VirtualizedContainerService.HintSize="434,1232" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" OpenMode="Always" Version="V1" WindowResize="Maximize">
                   <uix:NApplicationCard.Body>
                     <ActivityAction x:TypeArguments="x:Object">
                       <ActivityAction.Argument>

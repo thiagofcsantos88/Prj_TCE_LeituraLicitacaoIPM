@@ -4,6 +4,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "ConvertPDFA": "[1.0.0]",
+    "UiPath.Cryptography.Activities": "[1.2.1]",
     "UiPath.Database.Activities": "[1.4.0]",
     "UiPath.Excel.Activities": "[2.10.4]",
     "UiPath.PDF.Activities": "[3.4.0]",
